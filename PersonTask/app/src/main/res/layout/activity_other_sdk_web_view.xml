@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <FrameLayout
+        android:id="@+id/ll_title"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14dp"
+            android:paddingTop="19dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="19dp"
+            android:src="@drawable/btn_back_black" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="10"
+            android:ellipsize="end"
+            android:layout_gravity="center"
+            android:textColor="#484848"
+            android:textSize="18sp" />
+
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/ll_time"
+        android:visibility="gone"
+        android:layout_below="@+id/ll_title"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="#FFEB3B"
+        android:paddingLeft="15dp"
+
+        android:gravity="center_vertical"
+        android:layout_height="40dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="#333"
+            android:textSize="14sp"
+            android:text="剩余倒计时"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:textColor="#DA1A0C"
+            android:textSize="18sp"
+            android:layout_marginLeft="8dp"
+            android:text="5:00"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <WebView
+        android:layout_below="@+id/ll_time"
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

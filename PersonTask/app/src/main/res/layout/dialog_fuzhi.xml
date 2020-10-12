@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:id="@+id/img_cha"
+        android:src="@drawable/cha"
+        android:layout_width="30dp"
+        android:layout_marginLeft="7dp"
+        android:layout_height="30dp"/>
+    <RelativeLayout
+        android:id="@+id/rl_bg"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@+id/img_cha"
+        android:layout_below="@+id/img_cha"
+        android:layout_marginRight="-10dp"
+        android:background="@drawable/shape_dialog_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/fuzhi"
+            android:layout_width="76dp"
+            android:layout_height="76dp"/>
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/img_1"
+            android:layout_centerHorizontal="true"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="分享口令已复制 去粘贴给好友领福利"
+            android:textSize="18sp"
+            android:textColor="#FF333333"/>
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/task_finish_btn"
+            android:layout_below="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:layout_height="wrap_content"
+            android:text="去粘贴"
+            android:textSize="16sp"
+            android:textColor="#FFFFFFFF"
+            android:gravity="center" />
+    </RelativeLayout>
+</RelativeLayout>
