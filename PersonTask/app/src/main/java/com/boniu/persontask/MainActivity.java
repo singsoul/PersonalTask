@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.boniu.persontask.utils.ApiHelper;
+import com.boniu.persontask.utils.SPUtils;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvPerson;
     @BindView(R.id.tv_task)
     TextView tvTask;
-
+    public static final String APP_NAME= "PTUDASHEN_ANDROID_BONIU";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,14 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,PersonActivity.class));
             }
         });
-
         tvTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String commonParam = "?aid=" + SPUtils.getInstance(MainActivity.this).getString(ApiHelper.ACCOUNT_ID) + "&appName=" + "PTUDASHEN_ANDROID_BONIU";
+                String commonParam = "?aid=" + SPUtils.getInstance(MainActivity.this).getString(ApiHelper.ACCOUNT_ID) + "&appName=" + APP_NAME;
 
                 Intent intent = new Intent(MainActivity.this, SignWebViewActivity.class);
-                intent.putExtra(SignWebViewActivity.OLD_URL, "");
+                intent.putExtra(SignWebViewActivity.OLD_URL, "http://test99.jukmall.cn/html/personal/mission/index.html{params}");
                 intent.putExtra(SignWebViewActivity.COMMON_PARAM, commonParam + "");
                 startActivity(intent);
             }

@@ -1,4 +1,4 @@
-package com.boniu.persontask;
+package com.boniu.persontask.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.boniu.persontask.R;
 
 //完成任务
 public class FinishTaskDialog extends Dialog {

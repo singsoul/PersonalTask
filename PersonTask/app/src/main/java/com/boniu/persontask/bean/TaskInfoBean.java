@@ -1,4 +1,4 @@
-package com.boniu.persontask;
+package com.boniu.persontask.bean;
 
 public class TaskInfoBean {
 

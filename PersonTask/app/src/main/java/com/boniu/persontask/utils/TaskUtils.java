@@ -1,17 +1,14 @@
-package com.boniu.persontask;
+package com.boniu.persontask.utils;
 
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.boniu.persontask.bean.FinishTaskBean;
+import com.boniu.persontask.dialog.FinishTaskDialog;
 import com.google.gson.Gson;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

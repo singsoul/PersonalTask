@@ -8,13 +8,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.boniu.persontask.PersonalInfo;
+import com.boniu.persontask.bean.PersonalInfo;
 import com.boniu.persontask.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;

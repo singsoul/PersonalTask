@@ -1,4 +1,4 @@
-package com.boniu.persontask;
+package com.boniu.persontask.utils;
 
 
 public class ApiHelper {
@@ -41,10 +41,6 @@ public class ApiHelper {
     public static final String TASK_ID = "TASK_ID";
 
 
-    public static final String VIP_TYPE = "VIP_TYPE";
-
-    public static final String UUID_STR = "UUID_STR";
-    public static final int LOGIN_RETURN = 1024;
 
     public static final String APP_NAME = "PTUDASHEN_ANDROID_BONIU";//app标示
 

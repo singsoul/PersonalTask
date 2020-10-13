@@ -1,18 +1,17 @@
-package com.boniu.persontask;
+package com.boniu.persontask.bean;
 
-public class YaoqingTxtBean {
-
+public class FinishTaskBean {
 
     /**
      * success : true
      * returnCode : 200
-     * result : ##hQpoQ0Ni##
+     * result : {"awardScore":100}
      * timeOut : false
      */
 
     private boolean success;
     private String returnCode;
-    private String result;
+    private ResultBean result;
     private boolean timeOut;
 
     public boolean isSuccess() {
@@ -31,11 +30,11 @@ public class YaoqingTxtBean {
         this.returnCode = returnCode;
     }
 
-    public String getResult() {
+    public ResultBean getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(ResultBean result) {
         this.result = result;
     }
 
@@ -45,5 +44,21 @@ public class YaoqingTxtBean {
 
     public void setTimeOut(boolean timeOut) {
         this.timeOut = timeOut;
+    }
+
+    public static class ResultBean {
+        /**
+         * awardScore : 100
+         */
+
+        private String awardScore;
+
+        public String getAwardScore() {
+            return awardScore;
+        }
+
+        public void setAwardScore(String awardScore) {
+            this.awardScore = awardScore;
+        }
     }
 }

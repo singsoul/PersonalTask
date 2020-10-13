@@ -5,9 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -19,6 +17,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.boniu.persontask.bean.TaskInfoBean;
+import com.boniu.persontask.bean.YaoqingTxtBean;
+import com.boniu.persontask.dialog.FuzhiDialog;
+import com.boniu.persontask.utils.AESUtil;
+import com.boniu.persontask.utils.ApiHelper;
+import com.boniu.persontask.utils.SPUtils;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -107,6 +111,7 @@ public class SignWebViewActivity extends AppCompatActivity {
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (!webView.canGoBack()) {
                     imgxx.setVisibility(View.GONE);
                     finish();
@@ -138,6 +143,7 @@ public class SignWebViewActivity extends AppCompatActivity {
         }
 
         /**
+         * 观看激励视频
          * @param readyData
          */
         @JavascriptInterface
@@ -147,7 +153,7 @@ public class SignWebViewActivity extends AppCompatActivity {
         }
 
         /**
-         * 重新登陆
+         * 登陆失效
          * @param readyData
          */
         @JavascriptInterface
@@ -158,7 +164,10 @@ public class SignWebViewActivity extends AppCompatActivity {
             }
         }
 
-
+        /**
+         * 跳转其他h5页面
+         * @param url
+         */
         @JavascriptInterface
         public void startNewActivity(String url){
             Intent intent = new Intent(SignWebViewActivity.this, SignWebViewActivity.class);
@@ -207,7 +216,42 @@ public class SignWebViewActivity extends AppCompatActivity {
 
         }
 
+        /**
+         * accoundid为空。重新登陆
+         * @param money
+         */
+        @JavascriptInterface
+        public void newUserLogin(String money) {
+            //1。先判断是否登陆
+
+            //2。是否绑定手机号
+
+            //3。刷新h5
+//            if (是否登陆) {
+//            } else {
+//                //未绑定手机号
+//                if (是否绑定手机号) {
+//                    Intent intent = new Intent(SignWebViewActivity.this, LoginActivity.class);
+//                    startActivity(intent);
+//                    return;
+//                } else {
+//                    if (TextUtils.isEmpty(SPUtils.getInstance(SignWebViewActivity.this).getString(ApiHelper.ACCOUNT_ID) + "")) {
+//                        getMainToken();
+//                    } else {
+//                        commonParam = "?aid=" + SPUtils.getInstance(SignWebViewActivity.this).getString(ApiHelper.ACCOUNT_ID) + "&appName=" + "PTUDASHEN_ANDROID_BONIU";
+//                        if (oldurl.contains("{params}")) {
+//                            url = oldurl.replace("{params}", commonParam);
+//                        }
+//                        webView.loadUrl(url);
+//                    }
+//                }
+//            }
+        }
+
+
     }
+
+
     private void getMainToken() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
         Map<String, String> map = new HashMap<>();
@@ -254,6 +298,7 @@ public class SignWebViewActivity extends AppCompatActivity {
 
     }
 
+    //邀请好友
     private void yaoqing(){
         OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
         //设备信息参数

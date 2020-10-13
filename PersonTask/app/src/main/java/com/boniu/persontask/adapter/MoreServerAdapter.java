@@ -1,11 +1,10 @@
 package com.boniu.persontask.adapter;
 
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
-import com.boniu.persontask.PersonalInfo;
+import com.boniu.persontask.bean.PersonalInfo;
 import com.boniu.persontask.R;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
