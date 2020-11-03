@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.boniu.persontask.bean.MethodBean;
 import com.boniu.persontask.bean.TaskInfoBean;
 import com.boniu.persontask.bean.YaoqingTxtBean;
 import com.boniu.persontask.dialog.FuzhiDialog;
@@ -24,6 +26,8 @@ import com.boniu.persontask.utils.AESUtil;
 import com.boniu.persontask.utils.ApiHelper;
 import com.boniu.persontask.utils.SPUtils;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
@@ -56,6 +60,7 @@ public class SignWebViewActivity extends AppCompatActivity {
     private String commonParam;
 
     private Gson gson = new Gson();
+    private JsonObject jsonObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,8 +132,26 @@ public class SignWebViewActivity extends AppCompatActivity {
                 finish();
             }
         });
+        setTaskList();
 
+    }
 
+    //本地任务列表
+    private void setTaskList() {
+        jsonObject = new JsonObject();
+        JsonArray jsonArray = new JsonArray();
+        jsonArray.add("YIJIANHUANTOU");
+        jsonArray.add("CHOUHUATUPIAN");
+        jsonArray.add("MOBAN");
+        jsonArray.add("RENLIANCESHI");
+        jsonArray.add("DONGXIAOBIAOQING");
+        jsonArray.add("SHOUCANG");
+        jsonArray.add("SIGN");
+        jsonArray.add("INVITE");
+        jsonArray.add("KANXIAOSHUO");
+        jsonArray.add("KANZIXUN");
+        jsonArray.add("KANLINGSHENG");
+        jsonArray.add(jsonArray);
 
     }
 
@@ -249,8 +272,32 @@ public class SignWebViewActivity extends AppCompatActivity {
         }
 
 
+        //获取本地任务列表
+        @JavascriptInterface
+        public void getJumpTypeList(String method){
+            if (jsonObject != null){
+                MethodBean methodBean = gson.fromJson(method, MethodBean.class);
+                httpCallback(methodBean.getMethod(),jsonObject.toString());
+            }
+        }
+
+
     }
 
+    //统一网页回调方法
+    private void httpCallback(final String methodName, final String jsonStr){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String js = "javascript:" + methodName + "('" + jsonStr + "')";
+                webView.evaluateJavascript(js, new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String s) {
+                    }
+                });
+            }
+        });
+    }
 
     private void getMainToken() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
