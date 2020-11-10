@@ -20,12 +20,7 @@ public class ApiHelper {
     public static final String BASE_URI2 = "http://test99.jukmall.cn/";
 
 
-//    public static final String BASE_URI = "http://192.168.10.61:7102/";
-//    public static final String BASE_URI2 = "http://192.168.10.61:7102/";
 
-    public static final String COMMEN_BASE = BASE_URI + "app/common/versionInfo";
-    public static final String COMMEN_JUBAO = BASE_URI + "app/common/addReport";
-    public static final String COMMEN_GET_MAIN_TOKEN = BASE_URI + "ptu/info/initAccount";
     public static final String COMMEN_PERSONNAL = BASE_URI2 + "personal/index";//用md域名下的
     public static final String FINISH_TAKS = BASE_URI2 + "module/mission/report";//完成任务
 

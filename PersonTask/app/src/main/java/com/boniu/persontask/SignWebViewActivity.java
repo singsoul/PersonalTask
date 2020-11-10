@@ -183,7 +183,6 @@ public class SignWebViewActivity extends AppCompatActivity {
         public void h5ResCode(String readyData) {
             if (TextUtils.isEmpty(readyData)) return;
             if (readyData.equals("9990") || readyData.equals("9991")) {
-                getMainToken();
             }
         }
 
@@ -299,51 +298,6 @@ public class SignWebViewActivity extends AppCompatActivity {
         });
     }
 
-    private void getMainToken() {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
-        Map<String, String> map = new HashMap<>();
-        map.put("appName", ApiHelper.APP_NAME);
-        map.put("deviceType", "ANDROID");
-        map.put("version", "1.0.0");
-        map.put("deviceModel", Build.MODEL);
-        map.put("brand", Build.BRAND);
-        map.put("mobile", "18395996666");
-        map.put("uuid", "uuid");//唯一标示
-        String requestJson = new Gson().toJson(map);
-        Log.e("myFragmentgetMainToken", requestJson);
-        RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset=utf-8"), requestJson);
-        Request request = new Request.Builder()
-                .url(ApiHelper.COMMEN_GET_MAIN_TOKEN)
-                .post(requestBody)
-                .build();
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("myFragmentgetMainToken", "getMainToken->onFailure");
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final String jsonbean = response.body().string();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Log.e("myFragment", "getMainToken->isNoSuccess" + jsonbean);
-                            JSONObject object = new JSONObject(jsonbean);
-                            JSONObject result = object.getJSONObject("result");
-                            String accountId = result.getString("accountId");
-                            SPUtils.getInstance(SignWebViewActivity.this).put(ApiHelper.ACCOUNT_ID, accountId);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-            }
-        });
-
-    }
 
     //邀请好友
     private void yaoqing(){
